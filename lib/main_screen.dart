@@ -123,7 +123,7 @@ class _MainScreenState extends State<MainScreen> {
         headers: <String, String>{
           'Content-Type': 'application/json',
           'Authorization':
-              'key=	AAAAPh2IXxE:APA91bGE14KIs0NvYvF3rm8qoFY8TWjK99TmCzjxOMfc7qXrsfbuzzLCoSkPjlhewG1GpLDoiQjFim864rdMhx1qq21OHfeziaMnHGcz76xnFa0xKoKZ2TfWR8QVEdUL35iAlmLQKaTN'
+              'key=AAAAqGcdmIo:APA91bGhEo_bTkeRq9WfCohSFADjeoBwjfImyWg8Gun7zq90xuzdBjvO0xZItgwqKoGgcbRNtQtWM-5Sev066i993qJHlDHwyO5p4-E85JcRmGrANXhT_fAviwoyNLceClYx_syhKEMz'
         },
         body: jsonEncode(
           <String, dynamic>{
@@ -137,7 +137,7 @@ class _MainScreenState extends State<MainScreen> {
             "notification": <String, dynamic>{
               'title': title,
               'body': body,
-              'android_channel_id': 'dbfood',
+              'android_channel_id': 'fcm',
             },
             'to': token,
           },
@@ -182,9 +182,10 @@ class _MainScreenState extends State<MainScreen> {
 
                 if (name != '') {
                   DocumentSnapshot snap = await FirebaseFirestore.instance
-                      .collection('UserToken')
-                      .doc(name)
+                      .collection('UserTokens')
+                      .doc('User1')
                       .get();
+
                   String token = snap['token'];
 
                   print(token);
